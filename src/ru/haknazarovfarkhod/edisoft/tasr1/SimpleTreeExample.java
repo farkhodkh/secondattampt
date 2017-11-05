@@ -1,4 +1,4 @@
-package ru.haknazarovfarkhod.edisoft;
+package ru.haknazarovfarkhod.edisoft.tasr1;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -10,16 +10,11 @@ public class SimpleTreeExample {
 
     public static void main(String[] args) throws Exception {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Input number of levels:");
+        System.out.println("Input number of levels of Tree:");
         Integer level = scan.nextInt();
-
-//        System.out.println("Input number of child lins:");
-//        Integer lines = scan.nextInt();
 
         SimpleTreeExample simpleTreeExample = new SimpleTreeExample();
         TreeControler treeControler = new TreeControler();
-//        Map simpleTree = simpleTreeExample.SimpleTree(level, lines);
-//        System.out.println("entrySet: " + simpleTree.entrySet());
 
         Map defaultTree = treeControler.DefaultTree(level);
         System.out.println("entrySet: " + defaultTree.entrySet());
