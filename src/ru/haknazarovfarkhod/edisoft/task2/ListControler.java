@@ -23,6 +23,7 @@ public class ListControler {
         firstArrayList.addAll(arrayList);
 
         ArrayList secondArrayList = new ArrayList();
+        secondArrayList.addAll(arrayList);
 
         Iterator setIterator = hashSet.iterator();
 
@@ -74,8 +75,39 @@ public class ListControler {
 
         //2. Удалить из List числа, повторяющиеся три и больше раз не обязательно подряд
 
-        //Обратно копирую из HashSet
-        secondArrayList.addAll(hashSet);
+        totalFound.clear();
+        Iterator setIteratorSec = hashSet.iterator();
+
+        ListIterator arrListIteratorSec = secondArrayList.listIterator();
+
+        while(setIteratorSec.hasNext()){
+            Integer currItem = (Integer) setIteratorSec.next();
+            //Получить количество повторений значения
+            int repeats = Collections.frequency(secondArrayList, currItem);
+            //Если повторений больше или равно трем
+            if(repeats>=3) {
+                ArrayList indexArray = new ArrayList();
+                while (repeats > 0) {
+                    if(currItem.equals(arrListIteratorSec.next())) {
+                        indexArray.add(arrListIteratorSec.nextIndex());
+                        repeats--;
+                    }
+                }
+                Collections.sort(indexArray,Collections.reverseOrder());
+                totalFound.put(currItem, indexArray);
+            }
+        }
+
+        //Обход с удалением общего списка повторений
+        for (Object value : totalFound.values()) {
+            ArrayList valueArrayList = ((ArrayList) value);
+            ListIterator valueIterator = valueArrayList.listIterator();
+
+            while(valueIterator.hasNext()){
+                Integer index = (Integer) valueIterator.next();
+                secondArrayList.remove(index-1);
+            }
+        }
 
         System.out.println("Example of second part:" + secondArrayList);
         Boolean b = true;

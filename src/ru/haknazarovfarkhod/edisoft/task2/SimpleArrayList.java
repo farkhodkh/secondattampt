@@ -17,11 +17,13 @@ public class SimpleArrayList {
         arrayList.add(15);
         arrayList.add(15);
         arrayList.add(8);
+        arrayList.add(7);
         arrayList.add(15);
         arrayList.add(15);
         arrayList.add(15);
         arrayList.add(15);
         arrayList.add(15);
+        arrayList.add(7);
 
         //System.out.println(arrayList.indexOf(15));
         int count = Collections.frequency(arrayList, 15);
